@@ -6,13 +6,14 @@ import LayoutFooter from './components/LayoutFooter.vue'
 import LayoutFixed from './components/LayoutFixed.vue'
 
 // 触发获取导航列表的action
+// 在两个子组件的父组件中触发action，保证只触发一次
 
-// import { useCategoryStore } from '@/stores/categoryStore'
-// import { onMounted } from 'vue'
+import { useCategoryStore } from '@/stores/categoryStore'
+import { onMounted } from 'vue'
 
-// const categoryStore = useCategoryStore()
+const categoryStore = useCategoryStore()
 
-// onMounted(() => categoryStore.getCategory())
+onMounted(() => categoryStore.getCategory())
 </script>
 
 <template>

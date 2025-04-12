@@ -4,6 +4,9 @@ import LayoutHeaderUl from './LayoutHeaderUl.vue'
 import { useScroll } from '@vueuse/core'
 const { y } = useScroll(window)
 
+// 使用pinia中的数据
+import { useCategoryStore } from '@/stores/categoryStore'
+const categoryStore = useCategoryStore()
 
 </script>
 
@@ -13,7 +16,7 @@ const { y } = useScroll(window)
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
-      <ul class="app-header-nav">
+      <!-- <ul class="app-header-nav">
         <li class="home">
           <RouterLink to="/">首页</RouterLink>
         </li>
@@ -43,6 +46,11 @@ const { y } = useScroll(window)
         </li>
         <li>
           <RouterLink to="/">杂项</RouterLink>
+        </li>
+      </ul> -->
+      <ul class="app-header-nav">
+        <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
+          <router-link to="/">{{ item.name }}</router-link>
         </li>
       </ul>
       <!-- <LayoutHeaderUl /> -->
