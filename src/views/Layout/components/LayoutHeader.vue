@@ -60,31 +60,6 @@ onMounted(()=>{
       background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
     }
   }
-  .app-header-nav{
-    float: left;
-    // height: 70px;
-    // /* background-color: rgb(48, 138, 121); */
-
-  }
-  // 渲染出了问题
-  .home{
-    float: left;
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
-    font-size: 16px;
-    color: #333;
-    margin-left: 40px;
-    position: relative;
-    &:hover{
-      color: #c20707;
-      text-decoration: none;
-    }
-    // height: 70px;
-    // margin-left: 40px;
-
-  }
-
 
 
   .search {
