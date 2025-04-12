@@ -1,6 +1,20 @@
 <script setup>
 // import LayoutHeaderUl from './LayoutHeaderUl.vue'
 import HeaderCart from './HeaderCart.vue'
+import { getCategoryAPI } from '@/apis/layout'
+import {onMounted,ref} from 'vue'
+
+const categoryList = ref([])
+const getCategory = async ()=>{
+  const res = await getCategoryAPI()
+  console.log(res)
+  categoryList.value =res.result
+}
+
+onMounted(()=>{
+  getCategory()
+})
+
 </script>
 
 <template>
@@ -9,7 +23,11 @@ import HeaderCart from './HeaderCart.vue'
       <h1 class="logo">
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
-
+      <ul class="app-header-nav">
+        <li class="home" v-for="item in categoryList" :key="item.id">
+          <router-link to="/">{{ item.name }}</router-link>
+        </li>
+      </ul>
       <LayoutHeaderUl />
       <div class="search">
         <i class="iconfont icon-search"></i>
@@ -42,6 +60,31 @@ import HeaderCart from './HeaderCart.vue'
       background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
     }
   }
+  .app-header-nav{
+    float: left;
+    // height: 70px;
+    // /* background-color: rgb(48, 138, 121); */
+
+  }
+  // 渲染出了问题
+  .home{
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+    margin-left: 40px;
+    position: relative;
+    &:hover{
+      color: #c20707;
+      text-decoration: none;
+    }
+    // height: 70px;
+    // margin-left: 40px;
+
+  }
+
 
 
   .search {
