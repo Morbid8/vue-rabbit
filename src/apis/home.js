@@ -13,7 +13,7 @@ export function getBannerAPI (params = {}) {
     }
   })
 }
-
+//规范注释
 /**
  * @description: 获取新鲜好物
  * @param {*}
