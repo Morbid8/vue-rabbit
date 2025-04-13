@@ -2,7 +2,7 @@
 import HomePanel from './HomePanel.vue'
 import { getGoodsAPI } from '@/apis/home'
 import { onMounted, ref } from 'vue'
-// import GoodsItem from './GoodsItem.vue'
+import GoodsItem from './GoodsItem.vue'
 // 获取数据列表
 const goodsProduct = ref([])
 const getGoods = async () => {
@@ -26,22 +26,21 @@ onMounted(() => getGoods())
 
         <ul class="goods-list">
           <li v-for="goods in cate.goods" :key="goods.id">
-            <!-- 如果你已经写了 GoodsItem 组件，这里可以这样写： -->
-            <!-- <GoodsItem :goods="goods" /> -->
+            <!-- 如果已经写了 GoodsItem 组件，这里可以这样写： -->
+            <GoodsItem :goods="goods" />
 
-            <RouterLink :to="`/product/${goods.id}`" class="goods-item">
+            <!-- <RouterLink :to="`/product/${goods.id}`" class="goods-item">
               <img v-img-lazy="goods.picture" alt="" />
               <p class="name ellipsis">{{ goods.name }}</p>
               <p class="desc ellipsis">{{ goods.desc }}</p>
               <p class="price">&yen;{{ goods.price }}</p>
-            </RouterLink>
+            </RouterLink> -->
           </li>
         </ul>
       </div>
     </HomePanel>
   </div>
 </template>
-
 
 <style scoped lang='scss'>
 .home-product {
