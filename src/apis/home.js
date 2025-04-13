@@ -35,7 +35,7 @@ export const getHotAPI = () => {
     url: '/home/hot'
   })
 }
-
+//商品信息
 /**
  * @description: 获取所有商品模块
  * @param {*}
