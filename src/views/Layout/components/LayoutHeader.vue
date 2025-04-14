@@ -29,7 +29,7 @@ const categoryStore = useCategoryStore()
       <!-- 头部导航 -->
       <ul class="app-header-nav">
         <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-          <router-link :to="`/category/${item.id}`">{{ item.name }}</router-link>
+          <router-link active-class="active" :to="`/category/${item.id}`">{{ item.name }}</router-link>
         </li>
       </ul>
       <LayoutHeaderUl />
@@ -84,6 +84,34 @@ const categoryStore = useCategoryStore()
       color: #666;
     }
   }
+  .app-header-nav {
+    width: 820px;
+    display: flex;
+    padding-left: 40px;
+    position: relative;
+    z-index:998;
+
+    li{
+      margin-right: 40px;
+      width: 38px;
+      text-align: center;
+
+      a{
+        font-size: 16px;
+        line-height: 32px;
+        height: 32px;
+        display: inline-block;
+
+        &:hover{
+          color: $xtxColor;
+          border-bottom: 1px solid $xtxColor;
+        }
+      }
+      .active{
+        color: $xtxColor;
+        border-bottom: 1px solid $xtxColor;
+      }
+    }
 
   .cart {
     width: 50px;
@@ -114,5 +142,6 @@ const categoryStore = useCategoryStore()
       }
     }
   }
+}
 }
 </style>
