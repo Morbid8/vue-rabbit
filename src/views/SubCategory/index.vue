@@ -1,16 +1,16 @@
 <script setup>
-// import { getCategoryFilterAPI, getSubCategoryAPI } from '@/apis/category'
-// import { onMounted, ref } from 'vue'
-// import { useRoute } from 'vue-router'
+import { getCategoryFilterAPI } from '@/apis/category'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 // import GoodsItem from '../Home/components/GoodsItem.vue'
-// // 获取面包屑导航数据
-// const categoryData = ref({})
-// const route = useRoute()
-// const getCategoryData = async () => {
-//   const res = await getCategoryFilterAPI(route.params.id)
-//   categoryData.value = res.result
-// }
-// onMounted(() => getCategoryData())
+// 获取面包屑导航数据
+const categoryData = ref({})
+const route = useRoute()
+const getCategoryData = async () => {
+  const res = await getCategoryFilterAPI(route.params.id)
+  categoryData.value = res.result
+}
+onMounted(() => getCategoryData())
 
 // // 获取基础列表数据渲染
 // const goodList = ref([])
@@ -54,14 +54,20 @@
 <template>
   <div class="container ">
     <!-- 面包屑 -->
+    <!-- <div class="bread-container">
+      <el-breadcrumb separator=">">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: `/category/${categoryData.parentId}` }">{{ categoryData.parentname }}
+        </el-breadcrumb-item>
+        <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
+      </el-breadcrumb>
+    </div> -->
     <div class="bread-container">
       <el-breadcrumb separator=">">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <!-- category/${categoryData.parentId} -->
-        <el-breadcrumb-item :to="{ path: `/` }">居家
+        <el-breadcrumb-item :to="{ path: `/category/${categoryData.parentId}` }">{{ categoryData.parentName }}
         </el-breadcrumb-item>
-        <!-- {{ categoryData.name }} -->
-        <el-breadcrumb-item>居家生活用品</el-breadcrumb-item>
+        <el-breadcrumb-item>{{ categoryData.name }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="sub-container">

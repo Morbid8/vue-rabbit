@@ -16,14 +16,14 @@ export function getCategoryAPI (id) {
  * @return {*}
  */
 
-// export const getCategoryFilterAPI = (id) => {
-//   return request({
-//     url: '/category/sub/filter',
-//     params: {
-//       id
-//     }
-//   })
-// }
+export const getCategoryFilterAPI = (id) => {
+  return request({
+    url: '/category/sub/filter',
+    params: {
+      id
+    }
+  })
+}
 
 /**
  * @description: 获取导航数据
