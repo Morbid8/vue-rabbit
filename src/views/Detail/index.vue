@@ -1,18 +1,18 @@
 <script setup>
 // import DetailHot from './components/DetailHot.vue'
-// import { getDetail } from '@/apis/detail'
-// import { onMounted, ref } from 'vue'
-// import { useRoute } from 'vue-router'
+import { getDetail } from '@/apis/detail'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 // import { ElMessage } from 'element-plus'
 // import { useCartStore } from '@/stores/cartStore'
 // const cartStore = useCartStore()
-// const goods = ref({})
-// const route = useRoute()
-// const getGoods = async () => {
-//   const res = await getDetail(route.params.id)
-//   goods.value = res.result
-// }
-// onMounted(() => getGoods())
+const goods = ref({})
+const route = useRoute()
+const getGoods = async () => {
+  const res = await getDetail(route.params.id)
+  goods.value = res.result
+}
+onMounted(() => getGoods())
 
 // sku规格被操作时
 // let skuObj = {}
@@ -61,11 +61,12 @@
                 1. 可选链的语法?.
                 2. v-if手动控制渲染时机 保证只有数据存在才渲染
             -->
+          <!-- 一级 -->
           <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{ goods.categories[1].name }}
           </el-breadcrumb-item>
+          <!-- 二级 -->
           <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{
-            goods.categories[0].name
-          }}
+            goods.categories[0].name}}
           </el-breadcrumb-item>
           <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
         </el-breadcrumb>
@@ -78,6 +79,7 @@
               <!-- 图片预览区 -->
               <XtxImageView :image-list="goods.mainPictures" />
               <!-- 统计数量 -->
+              <!-- 人气，评价，收藏，信息的统计 -->
               <ul class="goods-sales">
                 <li>
                   <p>销量人气</p>
