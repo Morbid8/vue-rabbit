@@ -1,5 +1,5 @@
 <script setup>
-// import DetailHot from './components/DetailHot.vue'
+import DetailHot from './components/DetailHot.vue'
 import { getDetail } from '@/apis/detail'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
