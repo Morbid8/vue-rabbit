@@ -6,6 +6,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 // 设计props参数 适配不同的title和数据
 
+//type -1代表24小时热榜 2代表周热榜
 const props = defineProps({
   hotType: {
     type: Number
