@@ -78,8 +78,8 @@ onMounted(() => getGoods())
           <div class="goods-info">
             <div class="media">
               <!-- 图片预览区 -->
-              <ImageView></ImageView>
-              <XtxImageView :image-list="goods.mainPictures" />
+              <ImageView :image-list="goods.mainPictures"></ImageView>
+              <!-- <XtxImageView :image-list="goods.mainPictures" /> -->
               <!-- 统计数量 -->
               <!-- 人气，评价，收藏，信息的统计 -->
               <ul class="goods-sales">
