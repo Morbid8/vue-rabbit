@@ -18,22 +18,22 @@ const reqData = ref({
   categoryId: route.params.id,
   page: 1,
   pageSize: 20,
-  sortField: 'publishTime'
+  sortField: 'publishTime'//排序
 })
 const getGoodList = async () => {
   const res = await getSubCategoryAPI(reqData.value)
-  console.log(res)
+  // console.log(res)
   goodList.value = res.result.items
 }
 onMounted(() => getGoodList())
 
 
-// // tab切换回调
-// const tabChange = () => {
-//   console.log('tab切换了', reqData.value.sortField)
-//   reqData.value.page = 1
-//   getGoodList()
-// }
+// tab切换回调
+const tabChange = () => {
+  console.log('tab切换了', reqData.value.sortField)
+  reqData.value.page = 1
+  getGoodList()
+}
 
 // // 加载更多
 // const disabled = ref(false)
@@ -63,8 +63,8 @@ onMounted(() => getGoodList())
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <!-- v-model="reqData.sortField" @tab-change="tabChange" -->
-      <el-tabs >
+
+      <el-tabs v-model="reqData.sortField" @tab-change="tabChange">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人气" name="orderNum"></el-tab-pane>
         <el-tab-pane label="评论最多" name="evaluateNum"></el-tab-pane>
