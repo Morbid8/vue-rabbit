@@ -9,6 +9,7 @@
 import {getCategoryAPI} from '@/apis/category'
 import {ref,onMounted} from 'vue'
 import {useRoute} from 'vue-router'
+import { getBannerAPI } from '@/apis/home'
 
 //获取数据
 const categoryData = ref({})
@@ -18,9 +19,18 @@ const getCategory = async () => {
   categoryData.value = res.result
 }
 
-onMounted(() => {
-  getCategory()
-})
+onMounted(() => getCategory())
+//获取banner
+const bannerList = ref([])
+const getBanner = async () => {
+  const res = await getBannerAPI({
+    distributionSite : '2'
+  })
+  console.log(res)
+  bannerList.value = res.result
+}
+
+onMounted(() => getBanner())
 
 </script>
 
@@ -35,13 +45,13 @@ onMounted(() => {
         </el-breadcrumb>
       </div>
       <!-- 轮播图 -->
-      <!-- <div class="home-banner">
+      <div class="home-banner">
         <el-carousel height="500px">
           <el-carousel-item v-for="item in bannerList" :key="item.id">
             <img :src="item.imgUrl" alt="">
           </el-carousel-item>
         </el-carousel>
-      </div> -->
+      </div>
       <!-- <div class="sub-list">
         <h3>全部分类</h3>
         <ul>
