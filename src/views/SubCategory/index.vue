@@ -35,19 +35,20 @@ const tabChange = () => {
   getGoodList()
 }
 
-// // 加载更多
-// const disabled = ref(false)
-// const load = async () => {
-//   console.log('加载更多数据咯')
-//   // 获取下一页的数据
-//   reqData.value.page++
-//   const res = await getSubCategoryAPI(reqData.value)
-//   goodList.value = [...goodList.value, ...res.result.items]
-//   // 加载完毕 停止监听
-//   if (res.result.items.length === 0) {
-//     disabled.value = true
-//   }
-// }
+// 加载更多
+const disabled = ref(false)
+const load = async () => {
+  console.log('加载更多数据咯')
+  // 获取下一页的数据
+  reqData.value.page++
+  const res = await getSubCategoryAPI(reqData.value)
+  //新老数据拼接：展开运算符
+  goodList.value = [...goodList.value, ...res.result.items]
+  // 加载完毕 停止监听
+  if (res.result.items.length === 0) {
+    disabled.value = true
+  }
+}
 
 </script>
 
