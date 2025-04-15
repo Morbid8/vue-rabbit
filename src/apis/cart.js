@@ -1,4 +1,4 @@
-// 封装购物车相关接口
+// 封装购物车相关接口,登录状态
 import request from '@/utils/http'
 
 // 加入购物车
@@ -21,22 +21,22 @@ export const findNewCartListAPI = () => {
 }
 
 // 删除购物车
-export const delCartAPI = (ids) => {
-  return request({
-    url: '/member/cart',
-    method: 'DELETE',
-    data: {
-      ids
-    }
-  })
-}
+// export const delCartAPI = (ids) => {
+//   return request({
+//     url: '/member/cart',
+//     method: 'DELETE',
+//     data: {
+//       ids
+//     }
+//   })
+// }
 
 // 合并购物车
 
-export const mergeCartAPI = (data) => {
-  return request({
-    url: '/member/cart/merge',
-    method: 'POST',
-    data
-  })
-}
+// export const mergeCartAPI = (data) => {
+//   return request({
+//     url: '/member/cart/merge',
+//     method: 'POST',
+//     data
+//   })
+// }
