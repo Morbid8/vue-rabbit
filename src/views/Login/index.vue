@@ -17,7 +17,7 @@ const userStore = useUserStore()
 const form = ref({
   account: '18610848230',
   password: '123456',
-  agree: true
+  agree: true//是否同意
 })
 
 // 2. 准备规则对象
@@ -34,6 +34,8 @@ const rules = {
       validator: (rule, value, callback) => {
         console.log(value)
         // 自定义校验逻辑
+        //value:当前输入的数据
+        //callback：校验处理函数，校验通过调用
         // 勾选就通过 不勾选就不通过
         if (value) {
           callback()
