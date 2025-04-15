@@ -1,3 +1,4 @@
+<!-- 头部购物车 -->
 <script setup>
 import { useCartStore } from '@/stores/cartStore'
 const cartStore = useCartStore()
