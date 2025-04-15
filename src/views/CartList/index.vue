@@ -94,6 +94,7 @@ const allCheck = (selected) => {
           <span class="red">¥ {{ cartStore.selectedPrice }} </span>
         </div>
         <div class="total">
+          <!-- 跳转到结算页面 -->
           <el-button size="large" type="primary" @click="$router.push('/checkout')">下单结算</el-button>
         </div>
       </div>
