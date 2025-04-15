@@ -3,10 +3,10 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { loginAPI } from '@/apis/user'
-// import { useCartStore } from './cartStore'
+import { useCartStore } from './cartStore'
 // import { mergeCartAPI } from '@/apis/cart'
 export const useUserStore = defineStore('user', () => {
-  // const cartStore = useCartStore()
+  const cartStore = useCartStore()
   // 1. 定义管理用户数据的state
   const userInfo = ref({})
   // 2. 定义获取接口数据的action函数
@@ -29,7 +29,7 @@ export const useUserStore = defineStore('user', () => {
   const clearUserInfo = () => {
     userInfo.value = {}
     // 执行清除购物车的action
-    // cartStore.clearCart()
+    cartStore.clearCart()
   }
   // 3. 以对象的格式把state和action return
   return {
