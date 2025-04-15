@@ -24,6 +24,7 @@ const allCheck = (selected) => {
           <thead>
             <tr>
               <th width="120">
+                <!-- 全选 -->
                 <el-checkbox :model-value="cartStore.isAll" @change="allCheck" />
               </th>
               <th width="400">商品信息</th>
