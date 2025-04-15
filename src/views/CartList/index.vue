@@ -39,6 +39,7 @@ const allCheck = (selected) => {
             <tr v-for="i in cartStore.cartList" :key="i.id">
               <td>
                 <!-- 单选框 -->
+                <!-- v-model双向绑定指令不方便进行命令式的操作(因为后续还需要调用接口) -->
                 <el-checkbox :model-value="i.selected" @change="(selected) => singleCheck(i, selected)" />
               </td>
               <td>
