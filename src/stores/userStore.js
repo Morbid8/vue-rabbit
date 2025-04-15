@@ -12,6 +12,7 @@ export const useUserStore = defineStore('user', () => {
   // 2. 定义获取接口数据的action函数
   const getUserInfo = async ({ account, password }) => {
     const res = await loginAPI({ account, password })
+    console.log('loginAPI 返回值:', res)
     userInfo.value = res.result
     // 合并购物车的操作
     // await mergeCartAPI(cartStore.cartList.map(item => {
@@ -28,7 +29,7 @@ export const useUserStore = defineStore('user', () => {
   const clearUserInfo = () => {
     userInfo.value = {}
     // 执行清除购物车的action
-    cartStore.clearCart()
+    // cartStore.clearCart()
   }
   // 3. 以对象的格式把state和action return
   return {
