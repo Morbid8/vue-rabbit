@@ -24,17 +24,17 @@ export const useUserStore = defineStore('user', () => {
     // cartStore.updateNewList()
   }
 
-  // // 退出时清除用户信息
-  // const clearUserInfo = () => {
-  //   userInfo.value = {}
-  //   // 执行清除购物车的action
-  //   cartStore.clearCart()
-  // }
+  // 退出时清除用户信息
+  const clearUserInfo = () => {
+    userInfo.value = {}
+    // 执行清除购物车的action
+    cartStore.clearCart()
+  }
   // 3. 以对象的格式把state和action return
   return {
     userInfo,
     getUserInfo,
-    // clearUserInfo
+    clearUserInfo
   }
 }, {
   persist: true,//数据持久化

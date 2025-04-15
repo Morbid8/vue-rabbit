@@ -3,6 +3,7 @@ import { useUserStore } from '@/stores/userStore'
 import { useRouter } from 'vue-router'
 const userStore = useUserStore()
 const router = useRouter()
+//退出功能
 const confirm = () => {
   console.log('用户要退出登录了')
   // 退出登录业务逻辑实现
