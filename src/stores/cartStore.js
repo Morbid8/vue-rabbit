@@ -3,7 +3,7 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useUserStore } from './userStore'
-import { insertCartAPI, findNewCartListAPI } from '@/apis/cart'
+import { insertCartAPI, findNewCartListAPI,delCartAPI } from '@/apis/cart'
 export const useCartStore = defineStore('cart', () => {
   const userStore = useUserStore()
   const isLogin = computed(() => userStore.userInfo.token)
@@ -39,17 +39,17 @@ export const useCartStore = defineStore('cart', () => {
 
   // 删除购物车
   const delCart = async (skuId) => {
-    // if (isLogin.value) {
-    //   // 调用接口实现接口购物车中的删除功能
-    //   await delCartAPI([skuId])
-    //   updateNewList()
-    // } else {
+    if (isLogin.value) {
+      // 调用接口实现接口购物车中的删除功能
+      await delCartAPI([skuId])
+      updateNewList()
+    } else {
       // 思路：
       // 1. 找到要删除项的下标值 - splice
       // 2. 使用数组的过滤方法 - filter
       const idx = cartList.value.findIndex((item) => skuId === item.skuId)
       cartList.value.splice(idx, 1)
-    // }
+    }
   }
 
   // 单选功能
