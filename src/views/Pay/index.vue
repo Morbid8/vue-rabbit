@@ -2,8 +2,9 @@
 import { getOrderAPI } from '@/apis/pay'
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-// import { useCountDown } from '@/composables/useCountDown'
-// const { formatTime, start } = useCountDown()
+import { useCountDown } from '@/composables/useCountDown'
+const { formatTime, start } = useCountDown()
+// start(60)
 // 获取订单数据
 const route = useRoute()
 const payInfo = ref({})
@@ -11,7 +12,7 @@ const getPayInfo = async () => {
   const res = await getOrderAPI(route.query.id)
   payInfo.value = res.result
   // 初始化倒计时秒数
-  // start(res.result.countdown)
+  start(res.result.countdown)
 }
 onMounted(() => getPayInfo())
 
@@ -28,6 +29,7 @@ const payUrl = `${baseURL}pay/aliPay?orderId=${route.query.id}&redirect=${redire
 
 
 <template>
+  <!-- {{ formatTime }} -->
   <div class="xtx-pay-page">
     <div class="container">
       <!-- 付款信息 -->
