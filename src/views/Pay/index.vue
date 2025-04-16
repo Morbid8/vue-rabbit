@@ -1,19 +1,19 @@
 <script setup>
-// import { getOrderAPI } from '@/apis/pay'
-// import { onMounted, ref } from 'vue'
-// import { useRoute } from 'vue-router'
+import { getOrderAPI } from '@/apis/pay'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
 // import { useCountDown } from '@/composables/useCountDown'
 // const { formatTime, start } = useCountDown()
-// // 获取订单数据
-// const route = useRoute()
-// const payInfo = ref({})
-// const getPayInfo = async () => {
-//   const res = await getOrderAPI(route.query.id)
-//   payInfo.value = res.result
-//   // 初始化倒计时秒数
-//   start(res.result.countdown)
-// }
-// onMounted(() => getPayInfo())
+// 获取订单数据
+const route = useRoute()
+const payInfo = ref({})
+const getPayInfo = async () => {
+  const res = await getOrderAPI(route.query.id)
+  payInfo.value = res.result
+  // 初始化倒计时秒数
+  // start(res.result.countdown)
+}
+onMounted(() => getPayInfo())
 
 // // 跳转支付
 // // 携带订单id以及回调地址跳转到支付地址（get）
