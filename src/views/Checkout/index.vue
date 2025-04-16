@@ -160,6 +160,7 @@ const createOrder = async () => {
     </div>
   </div>
   <!-- 切换地址 -->
+  <!--v-model绑定响应式数据  -->
   <el-dialog v-model="showDialog" title="切换收货地址" width="30%" center>
     <div class="addressWrapper">
       <div class="text item" :class="{ active: activeAddress.id === item.id }" @click="switchAddress(item)"
