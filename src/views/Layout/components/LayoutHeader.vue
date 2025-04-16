@@ -17,6 +17,14 @@ import {onMounted,ref} from 'vue'
 // 使用pinia中的数据
 import { useCategoryStore } from '@/stores/categoryStore'
 const categoryStore = useCategoryStore()
+console.log(categoryStore);
+
+onMounted(() => {
+  categoryStore.categoryList.forEach(item => {
+    console.log('导航文字:', item.name)
+  })
+})
+
 
 </script>
 
@@ -28,6 +36,11 @@ const categoryStore = useCategoryStore()
       </h1>
       <!-- 头部导航 -->
       <ul class="app-header-nav">
+        <!-- 首页 -->
+        <li class="home">
+          <router-link exact-active-class="active" to="/">首页</router-link>
+        </li>
+        <!-- 分类导航 -->
         <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
           <router-link active-class="active" :to="`/category/${item.id}`">{{ item.name }}</router-link>
         </li>
@@ -85,6 +98,7 @@ const categoryStore = useCategoryStore()
     }
   }
   .app-header-nav {
+    // border: 1px solid red;
     width: 820px;
     display: flex;
     padding-left: 40px;

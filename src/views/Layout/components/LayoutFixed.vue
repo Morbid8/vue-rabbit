@@ -49,6 +49,9 @@ const categoryStore = useCategoryStore()
         </li>
       </ul> -->
       <ul class="app-header-nav">
+        <li class="home">
+          <router-link exact-active-class="active" to="/">首页</router-link>
+        </li>
         <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
           <router-link :to="`/category/${item.id}`">{{ item.name }}</router-link>
         </li>
