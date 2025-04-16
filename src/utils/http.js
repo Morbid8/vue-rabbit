@@ -7,7 +7,8 @@ import { useUserStore } from '@/stores/userStore'
 import router from '@/router'
 const httpInstance = axios.create({
   baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
-  timeout: 5000
+  //注意：人数过多的话可能会请求超时
+  timeout: 20000
 })
 
 // 拦截器
@@ -32,11 +33,16 @@ httpInstance.interceptors.request.use(config => {
 // axios响应式拦截器
 httpInstance.interceptors.response.use(res => res.data, e => {
   const userStore = useUserStore()
+
+  console.error('错误对象完整内容：', e)
+  console.error('错误响应：', e.response)
   // 统一错误提示
   ElMessage({
     type: 'warning',
-    message: e.response.data.message
+    // message: e.response.data.message
+    message: e.response?.data?.message || '服务异常，请稍后重试'
   })
+
   //401token失效处理
   //1.清除本地用户数据
   //2.跳转到登录页
@@ -44,6 +50,7 @@ httpInstance.interceptors.response.use(res => res.data, e => {
     userStore.clearUserInfo()
     router.push('/login')
   }
+
   return Promise.reject(e)
 })
 

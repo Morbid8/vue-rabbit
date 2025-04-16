@@ -2,6 +2,7 @@ import request from '@/utils/http'
 
 
 export const getDetail = (id) => {
+  console.log('请求URL:', `http://pcapi-xiaotuxian-front-devtest.itheima.net/goods?id=${id}`);
   return request({
     url: '/goods',
     params: {

@@ -11,8 +11,17 @@ const cartStore = useCartStore()
 const goods = ref({})
 const route = useRoute()
 const getGoods = async () => {
-  const res = await getDetail(route.params.id)
-  goods.value = res.result
+  try{
+    //console.log('请求的商品ID:', route.params.id); // 打印商品ID
+    const res = await getDetail(route.params.id)
+    // console.log(res);
+    goods.value = res.result
+  }
+  catch (error) {
+    // ElMessage.error('获取商品详情失败')
+    console.error('商品详情获取失败：', error)
+  }
+
 }
 onMounted(() => getGoods())
 
